@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 function NavBar() {
   return (
     <header>
@@ -20,4 +21,4 @@ function NavBar() {
   );
 }
 
-export default NavBar
+export default NavBar;
