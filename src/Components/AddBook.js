@@ -6,7 +6,7 @@ function AddBook() {
       <form action="#" className="form">
         <input type="text" placeholder="title" />
         <input type="text" placeholder="author" />
-        <button type="button">Add</button>
+        <button type="button"> Add </button>
       </form>
     </div>
   );
