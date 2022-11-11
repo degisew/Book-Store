@@ -1,11 +1,13 @@
 /* eslint-disable */
 import React from 'react';
-
-function Book(props) {
+import { useDispatch } from 'react-redux';
+import { remove } from '../redux/Books/Books';
+function Book({ book }) {
+  const dispatch = useDispatch();
   return (
     <div className="single-book-container">
-      <h3>{ props.title }</h3>
-      <button type="button" className="del-btn">Delete</button>
+      <h3>{ book.title }</h3>
+      <button type="button" onClick={() => dispatch(remove(book.id))} className="del-btn">Delete</button>
     </div>
   );
 }

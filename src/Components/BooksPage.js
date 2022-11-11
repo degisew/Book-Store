@@ -1,40 +1,14 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from 'react-redux';
 import AddBook from './AddBook';
 import Book from './Book';
 
 function BooksPage() {
-  const books = [
-    {
-      id: uuidv4(),
-      title: 'Zamra',
-      author: 'Yismake',
-    },
-    {
-      id: uuidv4(),
-      title: 'Merbebit',
-      author: 'Alemayehu',
-    },
-    {
-      id: uuidv4(),
-      title: 'Dertogada',
-      author: 'Yismake',
-    },
-    {
-      id: uuidv4(),
-      title: 'Zubeyda',
-      author: 'Alex',
-    },
-    {
-      id: uuidv4(),
-      title: 'Hashmal',
-      author: 'Maebel',
-    },
-  ];
+  const selector = useSelector((state) => state.books);
   return (
     <div className="books-container">
-      {books.map((book) => (
-        <Book title={book.title} key={book.id} />
+      {selector.books.map((book) => (
+        <Book book={book} key={book.id} />
       ))}
       <AddBook />
     </div>

@@ -7,7 +7,11 @@ const categoriesSlice = createSlice({
   },
   reducers: {
     checkStatus: (state, { payload }) => {
-      state.categories.push(payload);
+      const usableState = state;
+      if (payload) {
+        usableState.categories.push(payload);
+      }
+      // usableState.categories = [];
     },
   },
 });
