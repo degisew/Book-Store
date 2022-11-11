@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createAction } from "@reduxjs/toolkit";
 
-const increment = createAction("add/remove");
 const bookSlice = createSlice({
   name: 'add_remove_book',
   initialState: {
