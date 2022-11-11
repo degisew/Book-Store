@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { createAction } from "@reduxjs/toolkit";
 
+const increment = createAction("add/remove");
 const bookSlice = createSlice({
   name: 'add_remove_book',
   initialState: {
@@ -19,12 +21,3 @@ const bookSlice = createSlice({
 
 export const { add, remove } = bookSlice.actions;
 export default bookSlice.reducer;
-
-// Action types
-// const ADD_BOOK = 'ADD_BOOK'
-// const REMOVE_BOOK = 'REMOVE_BOOK'
-
-// reducer
-// const reducer = (state, action) => {
-//     switch(action.type)
-// }

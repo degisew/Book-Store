@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { createAction } from "@reduxjs/toolkit";
 
+const increment = createAction("checkStatus");
 const categoriesSlice = createSlice({
   name: 'Categories',
   initialState: {
