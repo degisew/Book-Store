@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { useDispatch } from "react-redux";
-import { add } from "../redux/Books/Books";
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
+import { add } from '../redux/Books/Books';
 
 function AddBook() {
   const [input, setInput] = useState({
-    title: "",
-    author: "",
+    title: '',
+    author: '',
   });
 
   const onChangeHandler = (e) => {
@@ -35,7 +35,16 @@ function AddBook() {
           placeholder="author"
           onChange={onChangeHandler}
         />
-        <button type="button" onClick={() => dispatch(add(input))}>
+        <button
+          type="button"
+          onClick={() => {
+            dispatch(add(input));
+            setInput({
+              title: '',
+              author: '',
+            });
+          }}
+        >
           Add
         </button>
       </form>

@@ -35,7 +35,12 @@ const bookSlice = createSlice({
     },
 
     remove: (state, { payload }) => {
-      state.books.filter((book) => book.id !== payload);
+      // because eslint doesn't allow fun parameter assignation, we create new var
+      const stateVar = state;
+      const filteredBooks = stateVar.books.filter(
+        (book) => book.id !== payload,
+      );
+      stateVar.books = filteredBooks;
     },
   },
 });
