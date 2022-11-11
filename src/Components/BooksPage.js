@@ -1,12 +1,15 @@
-import React from 'react';
-import AddBook from './AddBook';
+import React from "react";
+import { useSelector } from "react-redux";
+import AddBook from "./AddBook";
+import Book from "./Book";
 
 function BooksPage() {
+  const selector = useSelector((state) => state.books);
   return (
     <div className="books-container">
-      {/* {books.map((book) => (
+      {selector.books.map((book) => (
         <Book title={book.title} key={book.id} />
-      ))} */}
+      ))}
       <AddBook />
     </div>
   );
