@@ -9,14 +9,8 @@ function BookStore() {
     <div className="main-container">
       <NavBar />
       <Routes>
-        <Route
-          path="/"
-          element={<BooksPage />}
-        />
-        <Route
-          path="/BooksPage"
-          element={<BooksPage />}
-        />
+        <Route path="/" element={<BooksPage />} />
+        <Route path="/BooksPage" element={<BooksPage />} />
         <Route path="/Categories" element={<Categories />} />
       </Routes>
     </div>
