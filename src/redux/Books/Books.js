@@ -1,49 +1,78 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+const apiKey = 'gPmJmxLEShCwGaxxSGRp';
+const postBookThunk = createAsyncThunk('add', async (book) => {
+  const url = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${apiKey}/books`;
+  await fetch(url,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(book),
+    });
+  return book;
+});
+
+const getBookThunk = createAsyncThunk('fetch', async () => {
+  const url = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${apiKey}/books`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+});
+
+const removeBookThunk = createAsyncThunk('fetch', async (id) => {
+  const url = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${apiKey}/books/${id}`;
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  await response.json();
+  return id;
+});
 
 const bookSlice = createSlice({
   name: 'add_remove_book',
   initialState: {
-    books: [
-      {
-        id: uuidv4(),
-        title: 'Zamra',
-        author: 'Yismake',
-      },
-      {
-        id: uuidv4(),
-        title: 'Merbebit',
-        author: 'Alemayehu',
-      },
-      {
-        id: uuidv4(),
-        title: 'Dertogada',
-        author: 'Yismake',
-      },
-      {
-        id: uuidv4(),
-        title: 'Zubeyda',
-        author: 'Alex',
-      },
-    ],
+    books: [],
+    isLoading: false,
   },
-
-  reducers: {
-    // reducers and also action creators at the same time
-    add: (state, { payload }) => {
-      state.books.push(payload);
+  extraReducers: {
+    [postBookThunk.pending]: (state) => {
+      const newSate = state;
+      newSate.isLoading = true;
     },
-
-    remove: (state, { payload }) => {
-      // because eslint doesn't allow fun parameter assignation, we create new var
-      const stateVar = state;
-      const filteredBooks = stateVar.books.filter(
-        (book) => book.id !== payload,
+    [postBookThunk.fulfilled]: (state, { payload }) => {
+      const newSate = state;
+      newSate.books.push(payload);
+      newSate.isLoading = false;
+    },
+    [postBookThunk.rejected]: (state) => {
+      const newSate = state;
+      newSate.isLoading = false;
+    },
+    [removeBookThunk.fulfilled]: (state, { payload }) => {
+      const newState = state;
+      const filtered = newState.books.filter(
+        (book) => book.item_id !== payload,
       );
-      stateVar.books = filteredBooks;
+      newState.books = filtered;
+    },
+    [getBookThunk.fulfilled]: (state, { payload }) => {
+      const newSate = state;
+      const booksList = [];
+      Object.keys(payload).forEach((key) => {
+        const book = payload[key][0];
+        book.item_id = key;
+        booksList.push(book);
+        newSate.books = booksList;
+      });
     },
   },
 });
 
+export { getBookThunk, postBookThunk, removeBookThunk };
 export const { add, remove } = bookSlice.actions;
 export default bookSlice.reducer;
