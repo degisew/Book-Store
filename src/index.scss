@@ -141,23 +141,29 @@ header {
     }
   }
 
-  .form {
+  .form-container {
     display: flex;
-    column-gap: 20px;
-    margin-top: 20px;
+    flex-direction: column;
+    align-self: center;
 
-    .inputs {
-      padding: 5px;
-      border: 1px solid silver;
-      border-radius: 5px;
-    }
+    .form {
+      display: flex;
+      column-gap: 20px;
+      margin-top: 20px;
 
-    .btn-add {
-      padding: 5px;
-      background-color: #0557f9;
-      border: none;
-      border-radius: 3px;
-      color: white;
+      .inputs {
+        padding: 5px;
+        border: 1px solid silver;
+        border-radius: 5px;
+      }
+
+      .btn-add {
+        padding: 5px;
+        background-color: #0557f9;
+        border: none;
+        border-radius: 3px;
+        color: white;
+      }
     }
   }
 }

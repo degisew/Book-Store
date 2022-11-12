@@ -26,7 +26,7 @@ function AddBook() {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="form-container">
       <h3>ADD NEW BOOK</h3>
       <form action="#" className="form">
         <input
