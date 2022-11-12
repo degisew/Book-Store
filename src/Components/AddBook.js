@@ -8,27 +8,29 @@ function AddBook() {
     title: '',
     author: '',
   });
+  const [category, setCategory] = useState('fiction');
+
+  const cataChangeHandler = (e) => {
+    setCategory(e.target.value);
+  };
 
   const onChangeHandler = (e) => {
     setInput((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
       item_id: uuidv4(),
-      category: 'fiction',
+      category,
     }));
   };
 
-  // const selector = useSelector((state) => state.books);
   const dispatch = useDispatch();
-  // const selector = useSelector((state) => state.books.books);
-  // useeffect
-  // useEffect(() => {
-  //   dispatch(postBookThunk(input));
-  // }, [dispatch]);
+
   return (
     <div>
+      <h3>ADD NEW BOOK</h3>
       <form action="#" className="form">
         <input
+          className="inputs"
           name="title"
           type="text"
           value={input.title}
@@ -36,13 +38,21 @@ function AddBook() {
           onChange={onChangeHandler}
         />
         <input
+          className="inputs"
           name="author"
           type="text"
           value={input.author}
           placeholder="author"
           onChange={onChangeHandler}
         />
+        <select onChange={cataChangeHandler} className="inputs">
+          <option value="fiction">Fiction</option>
+          <option value="business">Business</option>
+          <option value="medicine">Medicine</option>
+          <option value="scientific">Scientific</option>
+        </select>
         <button
+          className="btn-add"
           type="button"
           onClick={() => {
             dispatch(postBookThunk(input));
@@ -52,7 +62,7 @@ function AddBook() {
             });
           }}
         >
-          Add
+          Add Book
         </button>
       </form>
     </div>
