@@ -7,54 +7,53 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: gainsboro;
+  background-color: whitesmoke;
 }
 
-.main-container {
-  background-color: lightgray;
-  width: 60%;
-  margin: 20px auto;
-  box-shadow: 1px 2px 25px rgb(131, 133, 130);
-  min-height: 600px;
+header {
+  margin-bottom: 30px;
+  background-color: white;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
 
-  header {
-    margin-bottom: 30px;
-    background-color: white;
+  .logo-ul-div {
     display: flex;
-    padding: 10px;
-    justify-content: space-between;
     align-items: center;
+    column-gap: 25px;
 
-    .logo-ul-div {
+    h1 {
+      color: rgb(76, 76, 244);
+    }
+
+    ul {
       display: flex;
-      align-items: center;
-      column-gap: 25px;
+      list-style-type: none;
+      column-gap: 20px;
 
-      h1 {
-        color: rgb(76, 76, 244);
-      }
-
-      ul {
-        display: flex;
-        list-style-type: none;
-        column-gap: 20px;
-
-        li {
-          .link {
-            text-decoration-line: none;
-            color: black;
-          }
+      li {
+        .link {
+          text-decoration-line: none;
+          color: black;
         }
       }
     }
-
-    .svg-user {
-      color: #3d78ee;
-      width: 40px;
-      height: 40px;
-    }
-    // box-shadow: 3px 5px 2px gainsboro;
   }
+
+  .svg-user {
+    color: #3d78ee;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.main-container {
+  background-color: inherit;
+  width: 70%;
+  margin: 20px auto;
+  // box-shadow: 1px 2px 25px rgb(131, 133, 130);
+  min-height: 600px;
 
   .categories-container {
     display: flex;
@@ -90,7 +89,7 @@ body {
       }
 
       .author {
-        color: #3d78ee;
+        color: #6798f9;
         font-size: 11px;
       }
     }
@@ -105,7 +104,7 @@ body {
         border: none;
         // border-right: 2px solid black;
         background-color: inherit;
-        color: #3d78ee;
+        color: #0557f9;
       }
     }
 
@@ -135,7 +134,7 @@ body {
 
       .btn-update {
         padding: 5px;
-        background-color: #5083e3;
+        background-color: #0557f9;
         border: none;
         color: white;
       }
@@ -155,7 +154,7 @@ body {
 
     .btn-add {
       padding: 5px;
-      background-color: #1e08e3;
+      background-color: #0557f9;
       border: none;
       border-radius: 3px;
       color: white;
