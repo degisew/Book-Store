@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
-import { add } from '../redux/Books/Books';
+import { postBookThunk } from '../redux/Books/Books';
 
 function AddBook() {
   const [input, setInput] = useState({
@@ -13,11 +13,18 @@ function AddBook() {
     setInput((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-      id: uuidv4(),
+      item_id: uuidv4(),
+      category: 'fiction',
     }));
   };
+
   // const selector = useSelector((state) => state.books);
   const dispatch = useDispatch();
+  // const selector = useSelector((state) => state.books.books);
+  // useeffect
+  // useEffect(() => {
+  //   dispatch(postBookThunk(input));
+  // }, [dispatch]);
   return (
     <div>
       <form action="#" className="form">
@@ -38,7 +45,7 @@ function AddBook() {
         <button
           type="button"
           onClick={() => {
-            dispatch(add(input));
+            dispatch(postBookThunk(input));
             setInput({
               title: '',
               author: '',
