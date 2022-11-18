@@ -4,6 +4,7 @@ The Book store is a website similar to the "Awesome Books" website built in the 
 ## Built With the following
 
 - React
+- Redux-Toolkit
 - SCSS
 - Linters
 
